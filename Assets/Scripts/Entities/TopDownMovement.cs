@@ -10,6 +10,7 @@ public class TopDownMovement : MonoBehaviour
 
     private TopDownCharacterController _controller;
 
+    public Animator animator;
 
     private Vector2 _movementDirection = Vector2.zero;
     private Rigidbody2D _rigidbody;
@@ -40,6 +41,7 @@ public class TopDownMovement : MonoBehaviour
     {
         direction = direction * 5;
         _rigidbody.velocity = direction;
+        animator.SetFloat("Velocity", Mathf.Abs(_rigidbody.velocity.x + _rigidbody.velocity.y + (_rigidbody.velocity.x * _rigidbody.velocity.y))) ;//유니티 Animator에 있는 Parameters안에 있는 변수이름을 ()안에 적어주면 된다.
     }
 
     //여기서부터 캐릭터 시점 바라보는 메서드 구현
