@@ -22,6 +22,15 @@ public class PlayerInputController : TopDownCharacterController
 
     public void OnLook(InputValue value)
     {
+        Vector2 newAim = value.Get<Vector2>();
+        Vector2 worldPos = _camera.ScreenToWorldPoint(newAim);
+        newAim = (worldPos - (Vector2)transform.position); //발사같은건 구현 안할 것이기 때문에 normalized 는 빼준다.
+        
+        
+        if (newAim.magnitude >= .9f)//magnitude는 길이다. normalized로 길이를 1로 고정 시켜줘서 무조건 실행된다.
+        {
+            CallLookEvent(newAim);
+        }
 
     }
 }
