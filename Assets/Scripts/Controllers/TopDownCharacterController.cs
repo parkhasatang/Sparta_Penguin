@@ -3,9 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class TopDownCharacterController : MonoBehaviour
 {
+    
+
 
     public event Action<Vector2> OnMoveEvent;
     public event Action<Vector2> OnLookEvent;

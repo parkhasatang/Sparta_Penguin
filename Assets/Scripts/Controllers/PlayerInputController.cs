@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,10 +9,15 @@ public class PlayerInputController : TopDownCharacterController
 {
     //이 스크립트에서 event를 입력처리하는 역활
     private Camera _camera;
+    public TMP_Text playerName; // 변경할 오브젝트를 넣어줄 칸 생성
 
     private void Awake()
     {
         _camera = Camera.main;//메인 카메라 찾아오기
+
+        // 오브젝트 칸에 캐릭터 이름 설정
+        String PlayerName = PlayerPrefs.GetString("PlayerName");
+        playerName.text = PlayerName;
     }
 
 
