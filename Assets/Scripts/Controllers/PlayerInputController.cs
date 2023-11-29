@@ -8,11 +8,12 @@ using UnityEngine.InputSystem;
 public class PlayerInputController : TopDownCharacterController
 {
     //이 스크립트에서 event를 입력처리하는 역활
-    private Camera _camera;
+    public static Camera _camera;
     public TMP_Text playerName; // 변경할 오브젝트를 넣어줄 칸 생성
-
-    private void Awake()
+    //다형성 = 상속 받은 클래스에 따라서 구현이 조금씩 달라지는것
+    private void Awake() //다형성 예시 1 - public override void Awake()
     {
+        // 다형성 예시 1 - base.Awake();
         _camera = Camera.main;//메인 카메라 찾아오기
 
         // 오브젝트 칸에 캐릭터 이름 설정
@@ -40,4 +41,6 @@ public class PlayerInputController : TopDownCharacterController
         }
 
     }
+
+    //OnInteractive로 f누를시 안에 npc가 있다면 실행되는 함수를 만들어주자.
 }
