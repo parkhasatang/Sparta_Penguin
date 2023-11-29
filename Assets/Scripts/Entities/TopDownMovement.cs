@@ -34,6 +34,7 @@ public class TopDownMovement : MonoBehaviour
 
     private void Awake()
     {
+        manager.velocity = 1;
         _controller = GetComponent<TopDownCharacterController>();
         _rigidbody = GetComponent<Rigidbody2D>();
 
@@ -58,14 +59,24 @@ public class TopDownMovement : MonoBehaviour
         {
             float timeSinceLastClick = Time.time - lastClickTime;
 
-            if (timeSinceLastClick <= doubleClickTimeThreshold && targetObject != null)
+            if (timeSinceLastClick <= doubleClickTimeThreshold && targetObject != null )
             {
                 // 마우스 더블클릭이 감지.
-                Debug.Log("Double Click!" + targetObject.name);
+                //Debug.Log("Double Click!" + targetObject.name);
+                manager.Talk(targetObject);
+                Debug.Log("눌렸엉");
+                
                 //더블 클릭을 유도하는 창을 하나 만들어주자.
             }
 
             lastClickTime = Time.time;
+        }
+
+        if (Input.GetButtonDown("Jump")) //대화 UI창 닫아주는 역활.
+        {
+            manager.isTalking = false;
+            manager.velocity = 1;
+            manager._talkPanel.SetActive(false);
         }
     }
 
@@ -101,7 +112,7 @@ public class TopDownMovement : MonoBehaviour
 
     private void ApplyMovement(Vector2 direction)
     {
-        direction = direction * 5; ;// 게임 매니저에서 대화중이면 못움직이게 값을 0으로 만들어줌.
+        direction = direction * 5* manager.velocity; ;// 게임 매니저에서 대화중이면 못움직이게 값을 0으로 만들어줌.
         _rigidbody.velocity = direction;
         animator.SetFloat("Velocity", Mathf.Abs(_rigidbody.velocity.x + _rigidbody.velocity.y + (_rigidbody.velocity.x * _rigidbody.velocity.y))) ;//유니티 Animator에 있는 Parameters안에 있는 변수이름을 ()안에 적어주면 된다.
     }

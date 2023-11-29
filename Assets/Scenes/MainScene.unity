@@ -26374,7 +26374,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   watchRenderer: {fileID: 927500343}
   animator: {fileID: 927500344}
-  manager: {fileID: 0}
+  manager: {fileID: 2119939138}
   targetObject: {fileID: 0}
   doubleClickTimeThreshold: 0.3
 --- !u!114 &1305729999
@@ -28676,9 +28676,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isTalking: 0
-  _talkPanel: {fileID: 0}
-  _talking: {fileID: 0}
-  _npc: {fileID: 0}
+  _talkPanel: {fileID: 65161777}
+  _talking: {fileID: 1773164969}
+  _gameObj: {fileID: 0}
   velocity: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
